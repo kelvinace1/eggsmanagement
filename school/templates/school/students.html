@@ -1,0 +1,56 @@
+{%  extends "school/base.html" %}
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+    <div>
+ <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Eggs</th>
+                <th scope="col">Paid</th>
+                <th scope="col">Bal</th>
+                <th scope="col">Num</th>
+                <th scope="col">Feed</th>
+               
+              </tr>
+            </thead>
+            {% for student in students  %}
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>{{student.name}}</td>
+                <td>{{student.address}}</td>
+                <td>{{student.num_e}}</td>
+                <td>{{student.num_m}}</td>
+                <td>{{student.num_b}}</td>
+                <td>{{student.number}}</td>
+                <td>{{student.feed}}</td>
+                <td><button type="button" class="btn btn-success"><a href="{% url 'edit' student.id %}">Update</a></button></td>
+                <td><button type="button" class="btn btn-danger"><a href="{% url 'delete' student.id %}">Delete</a></button></td>
+                
+              </tr>
+            </tbody>
+          {% endfor %}
+          </table>
+    </div>
+{% else %}
+    <h1>while you have nothing to display</h1>
+    <p class="">welcome to eggmanage</p>
+    <h5>GET STARTED by managing your Customers</h5>
+    <button type="button" class="btn btn-dark"><a href="{% url 'add' %}">Get Started</a></button>
+
+
+    
+    <h1>you have nothing to display</h1>
+{% endif%}
+
+     
+
+{% endblock content %}
+    
